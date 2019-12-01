@@ -12,6 +12,7 @@ class Deck{
         Deck();
         void shuffle();
         void print();
+        Card draw();
     private:
         stack<Card> deck;
 };

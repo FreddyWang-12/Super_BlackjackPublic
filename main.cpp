@@ -1,18 +1,34 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Dice.h"
+#include "Player.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
 
 int main(){
-    Deck demo;
-    demo.shuffle();
-    demo.print();
+    Deck demoDeck;
+    demoDeck.shuffle();
 
-    Dice two;
-    for(int x = 0; x < 5; x++){
-        cout << two.diceRoll() << endl;
+    Player demoPlayer;
+    Player demoDealer;
+
+    demoPlayer.bet();
+    demoPlayer.drawCard(&demoDeck);
+    demoDealer.drawCard(&demoDeck);
+    demoPlayer.drawCard(&demoDeck);
+    demoDealer.drawCard(&demoDeck);
+
+    demoPlayer.printHand();
+    cout << endl;
+    demoDealer.printHand();
+    cout << endl;
+
+    if(demoPlayer.totalPoints() > 21 || demoPlayer.totalPoints() <= demoDealer.totalPoints()){
+        demoPlayer.lose();
+    }
+    else{
+        demoPlayer.win();
     }
 
     return 0;

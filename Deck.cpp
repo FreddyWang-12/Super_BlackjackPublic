@@ -15,10 +15,10 @@ Deck::Deck(){
     string category;
 
     queue<string> categories;
-    categories.push("of Spades");
-    categories.push("of Hearts");
-    categories.push("of Diamonds");
-    categories.push("of Clubs");
+    categories.push(" of Spades");
+    categories.push(" of Hearts");
+    categories.push(" of Diamonds");
+    categories.push(" of Clubs");
 
     for(i = 0; i < 4; i++){
         category = categories.front();
@@ -90,4 +90,10 @@ void Deck::print(){
         x.print();
         temp.pop();
     }
+}
+
+Card Deck::draw(){
+    Card drawn = deck.top();
+    deck.pop();
+    return drawn;
 }
