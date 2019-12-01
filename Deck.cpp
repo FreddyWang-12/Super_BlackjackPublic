@@ -65,7 +65,7 @@ Deck::Deck(){
 void Deck::shuffle(){
     Card tempArray[52];
     for(int i = 0; i < 52; i++){
-        Card temp = deck.top();
+        Card temp = deck.front();
         tempArray[i] = temp;
         deck.pop();
     }
@@ -83,17 +83,22 @@ void Deck::shuffle(){
 }
 
 void Deck::print(){
-    stack<Card> temp = deck;
+    queue<Card> temp = deck;
     cout << temp.size() << endl;
     for(int i = 0; i < 52; i++){
-        Card x = temp.top();
+        Card x = temp.front();
         x.print();
         temp.pop();
     }
+//    cout << deck.size() << endl;
 }
 
 Card Deck::draw(){
-    Card drawn = deck.top();
+    Card drawn = deck.front();
     deck.pop();
     return drawn;
+}
+
+void Deck::putBackCard(Card putBack){
+    deck.push(putBack);
 }

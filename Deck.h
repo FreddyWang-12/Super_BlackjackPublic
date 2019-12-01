@@ -13,8 +13,9 @@ class Deck{
         void shuffle();
         void print();
         Card draw();
+        void putBackCard(Card putBack);
     private:
-        stack<Card> deck;
+        queue<Card> deck;
 };
 
 #endif

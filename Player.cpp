@@ -41,18 +41,22 @@ void Player::rollDice(){
     pointValue += diceRoll;
 }
 
-void Player::win(){
+void Player::win(Deck *deck){
+    cout << "You Win!" << endl;
     bankBalance += betValue;
-    for(int i = 0; i < hand.size(); i++){
+    for(int i = 0; i <= hand.size(); i++){
+        deck->putBackCard(hand.front());
         hand.pop();
     }
     pointValue = 0;
     cout << "Bank Balance: " << bankBalance << endl;
 }
 
-void Player::lose(){
+void Player::lose(Deck *deck){
+    cout << "You Lose" << endl;
     bankBalance -= betValue;
-    for(int i = 0; i < hand.size(); i++){
+    for(int i = 0; i <= hand.size(); i++){
+        deck->putBackCard(hand.front());
         hand.pop();
     }
     pointValue = 0;
@@ -61,7 +65,7 @@ void Player::lose(){
 
 void Player::printHand(){
     queue<Card> temp = hand;
-    for(int i = 0; i < temp.size() + 1; i++){
+    for(int i = 0; i <= temp.size() + 1; i++){
         Card first = temp.front();
         first.print();
         temp.pop();

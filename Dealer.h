@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef DEALER_H
+#define DEALER_H
 #include <iostream>
 #include <cstring>
 #include <queue>
@@ -8,22 +8,16 @@
 #include "Dice.h"
 using namespace std;
 
-class Player{
+class Dealer{
     public:
-        Player();
-        void bet();
+        Dealer();
         void drawCard(Deck *deck);
         int totalPoints();
-        void rollDice();
-        void win(Deck *deck);
-        void lose(Deck *deck);
         void printHand();
+        void resetHand(Deck *deck);
     private:
         queue<Card> hand;
         int pointValue;
-        int betValue;
-        double bankBalance;
-        Dice dice;
 };
 
 #endif
