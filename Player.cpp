@@ -20,13 +20,13 @@ void Player::bet(){
 
 void Player::drawCard(Deck *deck){
     Card temp = deck->draw();
-    if(temp.getCategory().substr(0, 3) == "Ace"){
+/*    if(temp.getCategory().substr(0, 3) == "Ace"){
         int value;
         cout << "What is the value of this Ace Card (1 or 11)? ";
         cin >> value;
         cout << endl;
         temp.setValue(value);
-    }
+    }*/
     pointValue += temp.getValue();
     hand.push(temp);
 }
@@ -65,10 +65,10 @@ void Player::lose(Deck *deck){
 
 void Player::printHand(){
     queue<Card> temp = hand;
-    for(int i = 0; i <= temp.size() + 1; i++){
+    for(int i = 0; i <= temp.size(); i++){
         Card first = temp.front();
         first.print();
         temp.pop();
     }
-    cout << "Total Points: " << pointValue << endl;
+    cout << "Your Hand Value: " << pointValue << endl;
 }

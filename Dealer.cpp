@@ -13,9 +13,9 @@ Dealer::Dealer(){
 
 void Dealer::drawCard(Deck *deck){
     Card temp = deck->draw();
-    if(temp.getCategory().substr(0, 3) == "Ace"){
+/*    if(temp.getCategory().substr(0, 3) == "Ace"){
         temp.setValue(11);
-    }
+    }*/
     pointValue += temp.getValue();
     hand.push(temp);
 }
@@ -26,12 +26,13 @@ int Dealer::totalPoints(){
 
 void Dealer::printHand(){
     queue<Card> temp = hand;
-    for(int i = 0; i <= temp.size(); i++){
+    int size = temp.size();
+    for(int i = 0; i < size; i++){
         Card first = temp.front();
         first.print();
         temp.pop();
     }
-    cout << "Total Points: " << pointValue << endl;
+    cout << "Dealer's Hand Value: " << pointValue << endl;
 }
 
 void Dealer::resetHand(Deck *deck){

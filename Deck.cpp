@@ -52,7 +52,7 @@ Deck::Deck(){
         temp.erase();
 
         Card ace;
-        king.setValue(0);
+        king.setValue(11);
         temp = "Ace " + category;
         king.setCategory(temp);
         deck.push(king);

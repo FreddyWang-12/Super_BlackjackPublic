@@ -9,14 +9,16 @@ using namespace std;
 
 int main(){
     Deck demoDeck;
-    demoDeck.shuffle();
     bool cont = true;
 
     Player demoPlayer;
     Dealer demoDealer;
 
     while(cont){    
+        demoDeck.shuffle();
         demoPlayer.bet();
+
+        cout << "Dealing Cards: " << endl;
         demoDealer.drawCard(&demoDeck);
         demoPlayer.drawCard(&demoDeck);
         demoPlayer.drawCard(&demoDeck);
@@ -24,18 +26,24 @@ int main(){
         demoPlayer.printHand();
         cout << endl;
         demoDealer.printHand();
-        cout << endl;
+        cout << endl; 
 
         char response;
-        cout << "Enter 's' to stay, 'h' to hit on a card, or 'd' to hit on a dice: ";
-        cin >> response;
-        cout << endl;
+        while(cont){
+            cout << "Enter 's' to stay, 'h' to hit on a card, or 'd' to hit on a dice: ";
+            cin >> response;
+            cout << endl;
 
-        if(response == 'h'){
-            demoPlayer.drawCard(&demoDeck);
-        }
-        else if(response == 'd'){
-            demoPlayer.rollDice();
+            if(response == 'h'){
+                demoPlayer.drawCard(&demoDeck);
+                demoPlayer.printHand();
+            }
+            else if(response == 'd'){
+                demoPlayer.rollDice();
+            }
+            else{
+                cont = false;
+            }
         }
 
         while(demoDealer.totalPoints() < 17){
@@ -66,6 +74,9 @@ int main(){
 
         if(response == 'n'){
             cont = false;
+        }
+        else{
+            cont = true;
         }
     }
     return 0;
