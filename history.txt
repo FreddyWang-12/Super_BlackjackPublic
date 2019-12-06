@@ -1,0 +1,1 @@
+Hand: 4202177 Player: 14	Dealer: 26	Result: Player Won

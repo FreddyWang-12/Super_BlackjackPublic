@@ -35,6 +35,11 @@ void Dealer::printHand(){
     cout << "Dealer's Hand Value: " << pointValue << endl;
 }
 
+void Dealer::showFirstCard(){
+    Card first = hand.front();
+    first.print();
+}
+
 void Dealer::resetHand(Deck *deck){
     for(int i = 0; i <= hand.size(); i++){
         deck->putBackCard(hand.front());

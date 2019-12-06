@@ -14,6 +14,7 @@ class Dealer{
         void drawCard(Deck *deck);
         int totalPoints();
         void printHand();
+        void showFirstCard();
         void resetHand(Deck *deck);
     private:
         queue<Card> hand;
