@@ -25,10 +25,10 @@ int Dealer::totalPoints(){
 }
 
 void Dealer::printHand(){
-    queue<Card> temp = hand;
+    stack<Card> temp = hand;
     int size = temp.size();
     for(int i = 0; i < size; i++){
-        Card first = temp.front();
+        Card first = temp.top();
         first.print();
         temp.pop();
     }
@@ -36,13 +36,14 @@ void Dealer::printHand(){
 }
 
 void Dealer::showFirstCard(){
-    Card first = hand.front();
+    Card first = hand.top();
     first.print();
+    cout << endl;
 }
 
 void Dealer::resetHand(Deck *deck){
-    for(int i = 0; i <= hand.size(); i++){
-        deck->putBackCard(hand.front());
+    for(int i = 0; i <= hand.size() + 1; i++){
+        deck->putBackCard(hand.top());
         hand.pop();
     }
     pointValue = 0;

@@ -1,1 +1,1 @@
-Hand: 4202177 Player: 14	Dealer: 26	Result: Player Won
+Hand: 1 Player: 49	Dealer: 23	Result: Player Tied with Dealer

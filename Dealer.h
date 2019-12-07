@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <queue>
+#include <stack>
 #include "Card.h"
 #include "Deck.h"
 #include "Dice.h"
@@ -17,7 +18,7 @@ class Dealer{
         void showFirstCard();
         void resetHand(Deck *deck);
     private:
-        queue<Card> hand;
+        stack<Card> hand;
         int pointValue;
 };
 

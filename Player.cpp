@@ -20,13 +20,6 @@ void Player::bet(){
 
 void Player::drawCard(Deck *deck){
     Card temp = deck->draw();
-/*    if(temp.getCategory().substr(0, 3) == "Ace"){
-        int value;
-        cout << "What is the value of this Ace Card (1 or 11)? ";
-        cin >> value;
-        cout << endl;
-        temp.setValue(value);
-    }*/
     pointValue += temp.getValue();
     hand.push(temp);
 }
@@ -44,7 +37,9 @@ void Player::rollDice(){
 void Player::win(Deck *deck){
     cout << "You Win!" << endl;
     bankBalance += betValue;
-    for(int i = 0; i <= hand.size(); i++){
+
+    int size = hand.size();
+    for(int i = 0; i < size; i++){
         deck->putBackCard(hand.front());
         hand.pop();
     }
@@ -55,7 +50,21 @@ void Player::win(Deck *deck){
 void Player::lose(Deck *deck){
     cout << "You Lose" << endl;
     bankBalance -= betValue;
-    for(int i = 0; i <= hand.size(); i++){
+
+    int size = hand.size();
+    for(int i = 0; i < size; i++){
+        deck->putBackCard(hand.front());
+        hand.pop();
+    }
+    pointValue = 0;
+    cout << "Bank Balance: " << bankBalance << endl;
+}
+
+void Player::tie(Deck *deck){
+    cout << "You Tied" << endl;
+
+    int size = hand.size();
+    for(int i = 0; i < size; i++){
         deck->putBackCard(hand.front());
         hand.pop();
     }
@@ -65,7 +74,8 @@ void Player::lose(Deck *deck){
 
 void Player::printHand(){
     queue<Card> temp = hand;
-    for(int i = 0; i <= temp.size(); i++){
+    int size = temp.size();
+    for(int i = 0; i < size; i++){
         Card first = temp.front();
         first.print();
         temp.pop();

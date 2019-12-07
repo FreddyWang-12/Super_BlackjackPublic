@@ -17,6 +17,7 @@ class Player{
         void rollDice();
         void win(Deck *deck);
         void lose(Deck *deck);
+        void tie(Deck *deck);
         void printHand();
     private:
         queue<Card> hand;
