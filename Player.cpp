@@ -12,6 +12,14 @@ Player::Player(){
     pointValue = 0;
 }
 
+void Player::setBankAccount(int bankBalance){
+    this->bankBalance = bankBalance;
+}
+
+int Player::getBankAccount(){
+    return bankBalance;
+}
+
 void Player::bet(){
     cout << "How much do you want to bet? ";
     cin >> betValue;
@@ -40,7 +48,7 @@ void Player::win(Deck *deck){
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
-        deck->putBackCard(hand.front());
+        deck->putBackCard(hand.top());
         hand.pop();
     }
     pointValue = 0;
@@ -53,7 +61,7 @@ void Player::lose(Deck *deck){
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
-        deck->putBackCard(hand.front());
+        deck->putBackCard(hand.top());
         hand.pop();
     }
     pointValue = 0;
@@ -65,7 +73,7 @@ void Player::tie(Deck *deck){
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
-        deck->putBackCard(hand.front());
+        deck->putBackCard(hand.top());
         hand.pop();
     }
     pointValue = 0;
@@ -73,10 +81,10 @@ void Player::tie(Deck *deck){
 }
 
 void Player::printHand(){
-    queue<Card> temp = hand;
+    stack<Card> temp = hand;
     int size = temp.size();
     for(int i = 0; i < size; i++){
-        Card first = temp.front();
+        Card first = temp.top();
         first.print();
         temp.pop();
     }

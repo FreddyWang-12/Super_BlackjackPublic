@@ -11,6 +11,8 @@ using namespace std;
 class Player{
     public:
         Player();
+        void setBankAccount(int bankBalance);
+        int getBankAccount();
         void bet();
         void drawCard(Deck *deck);
         int totalPoints();
@@ -20,7 +22,7 @@ class Player{
         void tie(Deck *deck);
         void printHand();
     private:
-        queue<Card> hand;
+        stack<Card> hand;
         int pointValue;
         int betValue;
         double bankBalance;

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+
 using namespace std;
 
 int main(){
@@ -14,23 +15,30 @@ int main(){
     ofstream historyFile;
     int roundCounter = 0;
 
-    Player demoPlayer;
+    Player player;
     Dealer demoDealer;
+
+    ifstream bankAccount("bankAccount.txt");
+    string bankMoney;
+    getline(bankAccount, bankMoney);
+    int totalMoney = stoi(bankMoney.substr(14));
+    player.setBankAccount(totalMoney);
+    bankAccount.close();
 
     historyFile.open("history.txt");
     while(cont){
         roundCounter++;    
         demoDeck.shuffle();
-        demoPlayer.bet();
+        player.bet();
 
         cout << "Dealing Cards: \n" << endl;
         demoDealer.drawCard(&demoDeck);
-        demoPlayer.drawCard(&demoDeck);
+        player.drawCard(&demoDeck);
         demoDealer.drawCard(&demoDeck);
-        demoPlayer.drawCard(&demoDeck);
+        player.drawCard(&demoDeck);
 
         cout << "Player's Hand: " << endl;
-        demoPlayer.printHand();
+        player.printHand();
         cout << endl;
         cout << "Dealer Shows: " << endl;
         demoDealer.showFirstCard();
@@ -42,12 +50,12 @@ int main(){
             cout << endl;
 
             if(response == 'h'){
-                demoPlayer.drawCard(&demoDeck);
-                demoPlayer.printHand();
+                player.drawCard(&demoDeck);
+                player.printHand();
             }
             else if(response == 'd'){
-                demoPlayer.rollDice();
-                demoPlayer.printHand();
+                player.rollDice();
+                player.printHand();
             }
             else{
                 cont = false;
@@ -61,38 +69,38 @@ int main(){
         }
 
         cout << "Player's Hand: " << endl;
-        demoPlayer.printHand();
+        player.printHand();
         cout << endl;
         cout << "Dealer's Hand: " << endl;
         demoDealer.printHand();
         cout << endl;
 
         historyFile << "Hand: " << to_string(roundCounter); 
-        historyFile << " Player: " << to_string(demoPlayer.totalPoints());
+        historyFile << " Player: " << to_string(player.totalPoints());
         historyFile << "\tDealer: " << to_string(demoDealer.totalPoints());
 
-        if(demoPlayer.totalPoints() == demoDealer.totalPoints() || (demoPlayer.totalPoints() > 21 && demoDealer.totalPoints() > 21)){
-            demoPlayer.tie(&demoDeck);
+        if(player.totalPoints() == demoDealer.totalPoints() || (player.totalPoints() > 21 && demoDealer.totalPoints() > 21)){
+            player.tie(&demoDeck);
             demoDealer.resetHand(&demoDeck);
             historyFile << "\tResult: Player Tied with Dealer\n";
         }
-        else if(demoPlayer.totalPoints() > 21){
-            demoPlayer.lose(&demoDeck);
+        else if(player.totalPoints() > 21){
+            player.lose(&demoDeck);
             demoDealer.resetHand(&demoDeck);
             historyFile << "\tResult: Player Lost, Player Busts\n";
         }
         else if(demoDealer.totalPoints() > 21){
-            demoPlayer.win(&demoDeck);
+            player.win(&demoDeck);
             demoDealer.resetHand(&demoDeck);
             historyFile << "\tResult: Player Won, Dealer Busts\n";
         }
-        else if(demoPlayer.totalPoints() < demoDealer.totalPoints()){
-            demoPlayer.lose(&demoDeck);
+        else if(player.totalPoints() < demoDealer.totalPoints()){
+            player.lose(&demoDeck);
             demoDealer.resetHand(&demoDeck);
             historyFile << "\tResult: Player Lost, Score Below Dealer\n";
         }
         else{
-            demoPlayer.win(&demoDeck);
+            player.win(&demoDeck);
             demoDealer.resetHand(&demoDeck);
             historyFile << "\tResult: Player Won, Score Above Dealer\n";
         }
@@ -108,7 +116,16 @@ int main(){
             cont = false;
         }
     }
+
+    ofstream bank;
+    bank.open("bankAccount.txt");
+
+    cout << "Saving Bank Balance..." << endl;
+    historyFile << "Bank Balance: " << to_string(player.getBankAccount());
+    bank << "Bank Balance: " << to_string(player.getBankAccount());
+    cout << "Bank Balance Saved ";
     historyFile.close();
+    bank.close();
 
     ifstream displayedHistory("history.txt");
 
@@ -116,6 +133,7 @@ int main(){
     for(string line; getline(displayedHistory, line);){
         cout << line << endl;
     }
+
     displayedHistory.close();
 
     return 0;
