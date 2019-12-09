@@ -1,2 +1,2 @@
-Hand: 1 Player: 17	Dealer: 18	Result: Player Lost, Score Below Dealer
-Bank Balance: -10
+Hand: 1 Player: 21	Dealer: 23	Result: Player Won, Dealer Busts
+Bank Balance: 10

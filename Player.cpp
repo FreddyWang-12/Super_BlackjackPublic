@@ -38,8 +38,10 @@ int Player::totalPoints(){
 
 void Player::rollDice(){
     int diceRoll = dice.diceRoll();
-    cout << "Dice Roll: " << diceRoll << endl;
+    cout << "Dice Roll: " << endl;
+    dice.print(diceRoll);
     pointValue += diceRoll;
+    cout << "Your Point Value: " << pointValue << endl;
 }
 
 void Player::win(Deck *deck){
