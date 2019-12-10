@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <stdio.h>
 #include "Card.h"
 using namespace std;
 
@@ -42,7 +43,7 @@ void Card::print(){
 
     // If the card is a regular number card
     if(cardType == "Number"){
-        cout << "| " << value << "             |" << endl;
+        printf("|%2i             |\n", value);
         if(category == " Spades"){
             cout << "|       *       |" << endl;
             cout << "|     * * *     |" << endl;
@@ -76,7 +77,7 @@ void Card::print(){
             cout << "|   * * * * *   |" << endl;
         }
 
-        cout << "|             " << value << " |"  << endl;
+        printf("|             %2i|\n", value);
         cout << "+---------------+" << endl;
         cout << getValue() << " of" << getCategory() << endl;
     }
