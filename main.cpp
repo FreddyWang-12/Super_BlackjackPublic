@@ -1,7 +1,6 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Dice.h"
-#include "GamePiece.h"
 #include "Player.h"
 #include "Dealer.h"
 #include <iostream>
@@ -10,6 +9,7 @@
 
 using namespace std;
 
+// Creates a game of super blackjack
 int main(){
     Deck deck;
     bool cont = true;
@@ -123,6 +123,17 @@ int main(){
             player.lose(&deck);
             demoDealer.resetHand(&deck);
             historyFile << "\tResult: Player Lost, Score Below Dealer\n";
+        }
+        // If the player scores below the dealer without busting, the player will lose
+        else if(player.totalPoints() == 21){
+            player.win(&deck);
+            demoDealer.resetHand(&deck);
+            historyFile << "\tResult: Player Won, Blackjack on Deal\n";
+        }
+        else if(demoDealer.totalPoints() == 21){
+            player.lose(&deck);
+            demoDealer.resetHand(&deck);
+            historyFile << "\tResult: Player Lose, Dealer Blackjack on Deal\n";
         }
         // If the player scores above the dealer without busting, the player will win
         else{

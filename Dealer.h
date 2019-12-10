@@ -9,6 +9,9 @@
 #include "Dice.h"
 using namespace std;
 
+// The dealer is the primary opponenet the player has to 
+// face in blackjack. If the dealer scores above player or 
+// blackjacks on deal, the player loses.
 class Dealer{
     public:
         Dealer();

@@ -8,6 +8,8 @@
 #include "Dice.h"
 using namespace std;
 
+// The player of a game of blackjack. If the dealer scores below player or 
+// if the player blackjacks on deal, the player wins.
 class Player{
     public:
         Player();
