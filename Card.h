@@ -5,6 +5,8 @@
 #include "GamePiece.h"
 using namespace std;
 
+// The basic card unit used for blackjack; Each card will have 
+// a point value, category, and card type assigned to it
 class Card : public GamePiece{
     public:
         int getValue();

@@ -7,6 +7,8 @@
 #include "Card.h"
 using namespace std;
 
+// The deck of cards from which the dealer and the player 
+// will be playing super blackjack from
 class Deck{
     public:
         Deck();

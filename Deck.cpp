@@ -9,17 +9,20 @@
 #include "Deck.h"
 using namespace std;
 
+// Creates a new deck class 
 Deck::Deck(){
     int i;
     int j;
     string category;
 
+    // All of the card categories are sorted out
     queue<string> categories;
     categories.push(" Spades");
     categories.push(" Hearts");
     categories.push(" Diamonds");
     categories.push(" Clubs");
 
+    // All cards are created and placed into the deck
     for(i = 0; i < 4; i++){
         category = categories.front();
         for(j = 2; j <= 10; j++){
@@ -59,6 +62,8 @@ Deck::Deck(){
         categories.pop();
     }
 }
+
+// Shuffles the deck randomly
 void Deck::shuffle(){
     Card tempArray[52];
     for(int i = 0; i < 52; i++){
@@ -79,23 +84,29 @@ void Deck::shuffle(){
     }
 }
 
+// Prints all of the cards in the deck
+// or the current deck size if needed
 void Deck::print(){
-    queue<Card> temp = deck;
+/*    queue<Card> temp = deck;
     cout << temp.size() << endl;
     for(int i = 0; i < 52; i++){
         Card x = temp.front();
         x.print();
         temp.pop();
-    }
-//    cout << deck.size() << endl;
+    }*/
+    cout << deck.size() << endl;
 }
 
+// Allows the dealer and player classes to draw a card
+// from this deck
 Card Deck::draw(){
     Card drawn = deck.front();
     deck.pop();
     return drawn;
 }
 
+// Allows the dealer and player classes to place back
+// a card from this deck
 void Deck::putBackCard(Card putBack){
     deck.push(putBack);
 }

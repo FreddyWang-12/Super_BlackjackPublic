@@ -5,6 +5,7 @@
 #include <stdlib.h>
 using namespace std;
 
+// Represents the dice and card game pieces
 class GamePiece{
     public:
         void print();
