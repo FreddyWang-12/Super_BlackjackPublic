@@ -6,47 +6,49 @@ using namespace std;
 
 // Rolls a die that returns a point value between 1 to 6
 int Dice::diceRoll(){
-    return rand()%6 + 1;
+    value = rand()%6 + 1;
+    value = rand()%6 + 1;
+    return value;
 }
 
 // Displays the physical dice roll and its value
-void Dice::print(int roll){
-    if(roll == 1){
+void Dice::print(){
+    if(value == 1){
         cout << "+------------+" << endl;
         cout << "|            |" << endl;
         cout << "|      *     |" << endl;
         cout << "|            |" << endl;
         cout << "+------------+" << endl;
     }
-    if(roll == 2){
+    if(value == 2){
         cout << "+------------+" << endl;
         cout << "| *          |" << endl;
         cout << "|            |" << endl;
         cout << "|          * |" << endl;
         cout << "+------------+" << endl;
     }
-    if(roll == 3){
+    if(value == 3){
         cout << "+------------+" << endl;
         cout << "| *          |" << endl;
         cout << "|      *     |" << endl;
         cout << "|          * |" << endl;
         cout << "+------------+" << endl;
     }
-    if(roll == 4){
+    if(value == 4){
         cout << "+------------+" << endl;
         cout << "| *        * |" << endl;
         cout << "|            |" << endl;
         cout << "| *        * |" << endl;
         cout << "+------------+" << endl;
     }
-    if(roll == 5){
+    if(value == 5){
         cout << "+------------+" << endl;
         cout << "| *        * |" << endl;
         cout << "|      *     |" << endl;
         cout << "| *        * |" << endl;
         cout << "+------------+" << endl;
     }
-    if(roll == 6){
+    if(value == 6){
         cout << "+------------+" << endl;
         cout << "| *        * |" << endl;
         cout << "| *        * |" << endl;

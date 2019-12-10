@@ -15,48 +15,45 @@ Deck::Deck(){
     string category;
 
     queue<string> categories;
-    categories.push(" of Spades");
-    categories.push(" of Hearts");
-    categories.push(" of Diamonds");
-    categories.push(" of Clubs");
+    categories.push(" Spades");
+    categories.push(" Hearts");
+    categories.push(" Diamonds");
+    categories.push(" Clubs");
 
     for(i = 0; i < 4; i++){
         category = categories.front();
         for(j = 2; j <= 10; j++){
             Card standard;
             standard.setValue(j);
-            string temp = to_string(j) + category;
-            standard.setCategory(temp);
+            standard.setCardType("Number");
+            standard.setCategory(category);
             deck.push(standard);
         }
 
         Card king;
         king.setValue(10);
-        string temp = "King " + category;
-        king.setCategory(temp);
+        king.setCardType("King");
+        king.setCategory(category);
         deck.push(king);
-        temp.erase();
+
 
         Card queen;
-        king.setValue(10);
-        temp = "Queen " + category;
-        king.setCategory(temp);
-        deck.push(king);
-        temp.erase();
+        queen.setValue(10);
+        queen.setCardType("Queen");
+        queen.setCategory(category);
+        deck.push(queen);
 
         Card jack;
-        king.setValue(10);
-        temp = "Jack " + category;
-        king.setCategory(temp);
-        deck.push(king);
-        temp.erase();
+        jack.setValue(10);
+        jack.setCardType("Jack");
+        jack.setCategory(category);
+        deck.push(jack);
 
         Card ace;
-        king.setValue(11);
-        temp = "Ace " + category;
-        king.setCategory(temp);
-        deck.push(king);
-        temp.erase();
+        ace.setValue(11);
+        ace.setCardType("Ace");
+        ace.setCategory(category);
+        deck.push(ace);
 
         category.erase();
         categories.pop();

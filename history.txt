@@ -1,2 +1,2 @@
-Hand: 1 Player: 21	Dealer: 23	Result: Player Won, Dealer Busts
+Hand: 1 Player: 20	Dealer: 19	Result: Player Won, Score Above Dealer
 Bank Balance: 10

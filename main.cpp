@@ -1,6 +1,7 @@
 #include "Card.h"
 #include "Deck.h"
 #include "Dice.h"
+#include "GamePiece.h"
 #include "Player.h"
 #include "Dealer.h"
 #include <iostream>
