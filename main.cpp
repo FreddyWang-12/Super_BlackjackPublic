@@ -20,7 +20,7 @@ int main(){
     Dealer dealer;
 
     // Opening up the bank balance 
-    cout << "Loading bank balance..." << endl;
+    cout << "\nLoading bank balance..." << endl;
     ifstream bankAccount("bankAccount.txt");
     string bankMoney;
     getline(bankAccount, bankMoney);
@@ -50,6 +50,7 @@ int main(){
         cout << endl;
         cout << "Player's Hand: " << endl;
         player.printHand();
+        cout << endl;
 
         // The player can choose to stay, hit a card, or hit a dice
         char response;
@@ -62,11 +63,13 @@ int main(){
             if(response == 'h'){
                 player.drawCard(&deck);
                 player.printHand();
+                cout << endl;
             }
             // The player can roll the dice as he/she likes until he/she stays
             else if(response == 'd'){
                 player.rollDice();
                 player.printHand();
+                cout << endl;
             }
             // The player is satisfied with his/her hand and will wait for the dealer
             // to finish drawing cards
@@ -177,6 +180,7 @@ int main(){
     for(string line; getline(displayedHistory, line);){
         cout << line << endl;
     }
+    cout << endl;
 
     displayedHistory.close();
 
