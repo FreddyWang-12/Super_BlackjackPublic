@@ -8,7 +8,7 @@ using namespace std;
 // Represents the dice and card game pieces
 class GamePiece{
     public:
-        void print();
+        virtual void print();
     protected:
         int value;
 };

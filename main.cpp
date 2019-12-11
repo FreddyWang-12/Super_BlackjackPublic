@@ -185,5 +185,7 @@ int main(){
 
     displayedHistory.close();
 
+    cout << "Thank you for playing! " << endl;
+
     return 0;
 }
