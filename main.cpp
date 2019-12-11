@@ -98,6 +98,7 @@ int main(){
         historyFile << "Hand: " << to_string(roundCounter); 
         historyFile << " Player: " << to_string(player.totalPoints());
         historyFile << "\tDealer: " << to_string(dealer.totalPoints());
+        cout << "You had " << player.totalPoints() << " and the dealer had " << dealer.totalPoints() << "." << endl;
 
         // If both players have an equal amount of points, they will tie and no exchange of money is made
         if(player.totalPoints() == dealer.totalPoints()){

@@ -61,6 +61,7 @@ void Player::rollDice(){
 void Player::win(Deck *deck){
     cout << "You Win!" << endl;
     bankBalance += betValue;
+    cout << "You gained " << betValue << " dollars.\n" << endl;
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
@@ -76,6 +77,7 @@ void Player::win(Deck *deck){
 void Player::lose(Deck *deck){
     cout << "You Lose" << endl;
     bankBalance -= betValue;
+    cout << "You lost " << betValue << " dollars.\n" << endl;
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
@@ -90,6 +92,7 @@ void Player::lose(Deck *deck){
 // and the dealer tie 
 void Player::tie(Deck *deck){
     cout << "You Tied" << endl;
+    cout << "You neither gained nor lost any money.\n" << endl;
 
     int size = hand.size();
     for(int i = 0; i < size; i++){
